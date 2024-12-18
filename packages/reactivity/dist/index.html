@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module">
+    import {
+      reactive,
+      effect
+    } from './reactivity.js'
+    
+    const info = reactive({
+      flag: true,
+      name: 'ym',
+      age: 30
+    })
+    const _effect = effect(() => {
+      document.querySelector('#app').innerHTML = info.flag ? info.name : info.age + info.age
+    })
+    setTimeout(() => {
+      info.flag = false
+    }, 2000)
+  </script>
+</body>
+</html>
